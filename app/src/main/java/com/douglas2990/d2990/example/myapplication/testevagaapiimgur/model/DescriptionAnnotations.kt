@@ -1,0 +1,3 @@
+package com.douglas2990.d2990.example.myapplication.testevagaapiimgur.model
+
+class DescriptionAnnotations
