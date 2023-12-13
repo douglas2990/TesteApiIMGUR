@@ -6,6 +6,7 @@ import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Call
+import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
@@ -19,7 +20,7 @@ class RestManager{
             val client = OkHttpClient.Builder()
                 .connectTimeout(60, TimeUnit.SECONDS)
                 .readTimeout(60, TimeUnit.SECONDS)
-                .writeTimeout(600, TimeUnit.SECONDS)
+                .writeTimeout(60, TimeUnit.SECONDS)
 
             if (BuildConfig.DEBUG) {
                 val logInterceptor = HttpLoggingInterceptor()
@@ -42,9 +43,8 @@ class RestManager{
 
         interface IEndpoints {
             @GET("gallery/search/?q=cats")
-            fun getCats(
-
-            ): Call<ImgurModelCats>
+            fun getCats(): Call<ImgurModelCats>
+            //fun getCats(): Response<ImgurModelCats>
 
         }
     }
