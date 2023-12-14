@@ -33,5 +33,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layoutManager="GridLayoutManager"
+        tools:listitem="@layout/cats_adapter"
+        tools:spanCount="3" />
 </androidx.constraintlayout.widget.ConstraintLayout>

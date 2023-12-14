@@ -10,6 +10,7 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.douglas2990.d2990.example.myapplication.testevagaapiimgur.adapter.CatsAdapter
 import com.douglas2990.d2990.example.myapplication.testevagaapiimgur.databinding.FragmentFirstBinding
 import com.douglas2990.d2990.example.myapplication.testevagaapiimgur.screenstate.CatsScreenState
@@ -40,6 +41,7 @@ class FirstFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.recyclerFirst.layoutManager = LinearLayoutManager(context)
 
         cats()
 

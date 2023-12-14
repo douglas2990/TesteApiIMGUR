@@ -1,5 +1,7 @@
 package com.douglas2990.d2990.example.myapplication.testevagaapiimgur.model
 
+import com.google.gson.annotations.SerializedName
+
 data class Data(
     val account_id: Int,
     val account_url: String,
@@ -37,6 +39,7 @@ data class Data(
     val section: String,
     val size: Int,
     val tags: List<Tag>,
+    @SerializedName("title")
     val title: String,
     val topic: Any,
     val topic_id: Int,

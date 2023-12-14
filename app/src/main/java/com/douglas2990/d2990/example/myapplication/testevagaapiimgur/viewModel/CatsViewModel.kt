@@ -17,7 +17,7 @@ class CatsViewModel: ViewModel() {
     }
     init {
         state.value = CatsScreenState.Loading
-        RestManager.getEndpoints().getCats().enqueue(object : Callback<ImgurModelCats> {
+        RestManager.getEndpoints().getCats("cats").enqueue(object : Callback<ImgurModelCats> {
             override fun onResponse(
                 call: Call<ImgurModelCats>,
                 response: Response<ImgurModelCats>

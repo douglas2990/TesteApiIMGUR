@@ -2,6 +2,7 @@ package com.douglas2990.d2990.example.myapplication.testevagaapiimgur.api
 
 import androidx.viewbinding.BuildConfig
 import com.douglas2990.d2990.example.myapplication.testevagaapiimgur.model.ImgurModelCats
+import com.google.android.gms.auth.api.Auth
 import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -10,6 +11,7 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
+import retrofit2.http.Query
 import java.util.concurrent.TimeUnit
 
 class RestManager{
@@ -36,14 +38,20 @@ class RestManager{
             val retrofit = Retrofit.Builder()
                 .baseUrl("https://api.imgur.com/3/")
                 .addConverterFactory(GsonConverterFactory.create(gson))
-                .client(createHttpClient().build())
+                .client(
+                    OkHttpClient.Builder()
+                        .addInterceptor( AuthInterceptor() )
+                        .build()
+                )
                 .build()
             return retrofit.create(IEndpoints::class.java)
         }
 
         interface IEndpoints {
-            @GET("gallery/search/?q=cats")
-            fun getCats(): Call<ImgurModelCats>
+            @GET("gallery/search/")
+            fun getCats(
+                @Query("q") q: String
+            ): Call<ImgurModelCats>
             //fun getCats(): Response<ImgurModelCats>
 
         }
